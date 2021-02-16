@@ -7,28 +7,19 @@ canvas.height = height
 
 let centerX = width / 2
 let centerY = height / 2
-let xRadius = 200
-let yRadius = 400
-let xAngle = 0
-let yAngle = 0
-let xSpeed = 0.1
-let ySpeed = 0.131
+let radius = 200
+let angle = 0
 let x
 let y
+let objectCount = 20
+let slice = Math.PI * 2 / objectCount
 
-render()
-
-function render() {
-    context.clearRect(0,0,width, height)
-    x = centerX + xRadius * Math.cos(xAngle)
-    y = centerY + yRadius * Math.sin(yAngle)
+for (let i = 0; i < objectCount; i++) {
+    angle = i * slice
+    x = centerX + radius * Math.cos(angle)
+    y = centerY + radius * Math.sin(angle)
 
     context.beginPath()
     context.arc(x, y, 10, 0, Math.PI * 2, false)
     context.fill()
-
-    xAngle += xSpeed
-    yAngle += ySpeed
-
-    requestAnimationFrame(render)
 }
