@@ -5,12 +5,28 @@ canvas.width = width
 let height = window.innerHeight
 canvas.height = height
 
-context.translate(0, height / 2)
-context.scale(1,-1) 
+let centerY = height / 2
+let centerX = width / 2
+//how far to move the object in each direction
+let offset = height * .4
+//how fast to move the object, the angle incremenet
+let speed = 0.1
+let angle = 0
 
-for (let angle = 0; angle < Math.PI * 2; angle+=.01) {
-    let x = angle * 200
-    let y = Math.sin(angle) * 200
-    console.log(`Point (x=${x},y=${y})`)
-    context.fillRect(x,y,1,1) 
+render()
+
+function render() {
+    //sin gives me values between -1 to 1
+    //when we multiple by offset we get values between -offset to offset
+    //we add to the center to start there
+    let y = centerY + Math.sin(angle) * offset
+    context.clearRect(0,0,width, height)
+    context.beginPath()
+    // context.arc(x, y, radius, startAngle, endAngle, anticlockwise?)
+    context.arc(centerX, y, 50, 0, Math.PI * 2, false)
+    context.fill()
+
+    angle += speed
+
+    requestAnimationFrame(render)
 }
