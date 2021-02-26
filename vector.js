@@ -23,4 +23,30 @@ class Vector {
         this.x = newLength * Math.cos(slope)
         this.y = newLength * Math.sin(slope)
     }
+    plus(thatVector) {
+        return new Vector(this.x + thatVector.x,this.y + thatVector.y)
+    }
+
+    minus(thatVector) {
+        return new Vector(this.x - thatVector.x,this.y - thatVector.y)
+    }
+
+    times(scalar) {
+        return new Vector(this.x * scalar,this.y * scalar)
+    }
+
+    addTo(thatVector) {
+        this.x += thatVector.x
+        this.y += thatVector.y
+    }
+
+    subtractFrom(thatVector) {
+        this.x -= thatVector.x
+        this.y -= thatVector.y
+    }
+
+    multiplyBy(scalar) {
+        this.x *= scalar
+        this.y *= scalar
+    }
 }
