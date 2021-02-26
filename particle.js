@@ -9,4 +9,8 @@ class Particle {
     update() {
         this.position.addTo(this.velocity)
     }
+
+    accelerate(acceleration) {
+        this.velocity.addTo(acceleration)
+    }
 }
